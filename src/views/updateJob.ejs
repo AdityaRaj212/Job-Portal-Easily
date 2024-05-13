@@ -1,0 +1,101 @@
+<div class="heading">
+    Job Update Form
+</div>
+
+<div class="error_message">
+  <% if(errorMessage){ %>
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+</div>
+
+<div class="add_job_container">
+    <form class="row g-3" action="/updateJob" method="post">
+        <input type="hidden" name="id" value = <%= job.id %>>
+        <input type="hidden" name="info_tag[]" value="Job">
+        <input type="hidden" name="posting_date" value="<%= curr_date %>">
+
+        <div class="col-md-6">
+          <label for="profile" class="form-label">Job Profile</label>
+          <input type="text" class="form-control" id="profile" name="profile" value="<%= job.profile %>">
+        </div>
+        <div class="col-md-6">
+          <label for="hirer" class="form-label">Company Name</label>
+          <input type="text" class="form-control" id="hirer" name="hirer" value="<%= job.hirer %>">
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Job Location</label>
+          <input type="text" class="form-control" id="location" name="location" value="<%= job.location %>">
+        </div>
+        <div class="col-md-6">
+          <label for="salary" class="form-label">Salary (Annual CTC in INR)</label>
+          <input type="number" class="form-control" id="salary" name="salary" value="<%= job.salary %>">
+        </div>
+        <div class="col-md-6">
+            <label for="start" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="start" name="start" value="<%= job.start %>">
+        </div>
+        <div class="col-md-6">
+        <label for="experience" class="form-label">Experience</label>
+        <select id="experience" class="form-select" name="experience">
+            <option>Fresher</option>
+            <option>1-2 years</option>
+            <option>2-5 years</option>
+            <option>5+ years</option>
+        </select>
+        <!-- <script>
+            var previousValue = `${job.experience}`;
+            var previousValue = String(job.experience);
+            
+            var selectElement = document.getElementById("experience");
+            
+            for (var i = 0; i < selectElement.options.length; i++) {
+                if (selectElement.options[i].value == previousValue) {
+                    selectElement.options[i].selected = true;
+                    break;
+                }
+            }
+        </script> -->
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">About the job</label>
+            <textarea class="form-control" id="description" rows="3" name="description"><%= job.description %></textarea>
+        </div>
+        <div class="col-md-12">
+            <label for="responsibilities[]" class="form-label">Key Responsibilities</label>
+            <div id="resp_container">
+                <!-- Inputs will be added here -->
+                <% job.responsibilities.forEach((resp)=>{ %>
+                    <input type="text" class="form-control dynamic_input" name="responsibilities[]" value="<%= resp %>">
+                <% }) %>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addInput('resp_container','responsibilities')">Add Input</button>
+        </div>
+
+        <div class="col-md-12">
+            <label for="skills[]" class="form-label">Skill(s) required</label>
+            <div id="skills_container">
+                <!-- Inputs will be added here -->
+                <% job.skills.forEach((skill)=>{ %>
+                    <input type="text" class="form-control dynamic_input" name="skills[]" value="<%= skill %>">
+                <% }) %>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addInput('skills_container','skills')">Add Input</button>
+        </div>
+
+        <div class="col-md-6">
+            <label for="openings" class="form-label">Number of Openings</label>
+            <input type="number" class="form-control" id="openings" name="openings" value="<%= job.openings %>">
+        </div>
+
+        <div class="col-md-12">
+            <label for="about_hirer" class="form-label">About the company</label>
+            <textarea class="form-control" id="about_hirer" rows="3" name="about_hirer"><%= job.about_hirer %></textarea>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Update Job</button>
+        </div>
+      </form>
+</div>

@@ -1,0 +1,10 @@
+.add_job_container{
+    /* width: 75vw; */
+    padding: 1rem;  
+}
+
+.dynamic_input{
+    margin: 0.5rem 0 0.5rem 0;
+    width: 80vw !important; /*conflicting with form-control*/
+    height: 2rem;
+}

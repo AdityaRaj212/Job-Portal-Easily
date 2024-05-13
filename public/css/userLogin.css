@@ -1,0 +1,12 @@
+.login_container{
+    padding: 1rem;
+}
+
+.login_form_container{
+    display: flex;
+    justify-content: center;
+}
+
+.login_form{
+    width: 50vw;
+}

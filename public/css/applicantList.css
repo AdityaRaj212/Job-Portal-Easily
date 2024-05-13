@@ -1,0 +1,31 @@
+.applicant_header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.applicant_list_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.applicant_contact_info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.applicant_sub_heading{
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.applicant_content{
+    margin-bottom: 0.5rem;
+    color: rgb(80,80,80);
+}

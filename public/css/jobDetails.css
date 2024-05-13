@@ -1,0 +1,81 @@
+.details_container{
+    background-color: rgb(253,241,240);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details_job_profile{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.details_card{
+    width: 75vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid red;
+}
+
+.details_card h3{
+    margin: 0;
+}
+
+.details_hirer{
+    margin-bottom: 1rem;
+}
+
+.details_location{
+    margin-bottom: 1rem;
+}
+
+.details_details{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.details_start_date{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.details_salary{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details_experience{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.details_info_tag{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.details_about_job{
+    margin-bottom: 1rem;
+}
+
+.details_skills_required{
+    margin-bottom: 1rem;
+}
+
+.details_salary_offered{
+    margin-bottom: 1rem;    
+}
+
+.details_no_of_openings{
+    margin-bottom: 1rem;
+}

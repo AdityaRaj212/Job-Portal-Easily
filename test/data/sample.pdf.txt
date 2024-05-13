@@ -1,0 +1,107 @@
+
+
+CS29003 Algorithms Laboratory
+Assignment 1: Sorting, Recursions and Big O notation
+General instruction to be followed strictly
+1.  Do not use any global variable unless you are explicitly instructed so.
+2.  Do not use Standard Template Library (STL) of C++.
+3.  Use proper indentation in your code and comment.
+4.Name  your  file  as<roll_no>_<assignment_no>.For  example,  if  your  roll  number  is
+14CS10001  and  you  are  submitting  assignment  3,  then  name  your  file  as14CS10001_3.c
+or14CS10001_3.cppas applicable.
+5.Write your name, roll number, and assignment number at the beginning of your program.
+6.  Make your program as efficient as possible. Follow best practices of programming.
+7.  Submit your program on Moodle before deadline.  Submissions by email or any other means will
+NOT be considered for evaluation.
+In this assignment you generate arrays of numbers based on known functions and then sort each
+array in the fastest way possible.
+First, we define a new sorting technique. Thef(·)-Combined Sorting technique is as follows:
+▷If the sizenof the input arrayCis more thanf(n)thenCis broken into 2 halvesC[0 . . .
+n
+2
+−1]and
+C[
+n
+2
+. . .n−1]. Each ofC[0 . . .
+n
+2
+−1]andC[
+n
+2
+. . .n−1]are recursively sorted usingf(·)-Combined
+Sorting. Finally, the sorted subarraysC[0 . . .
+n
+2
+−1]andC[
+n
+2
+. . .n−1]are merged by a linear time
+subroutine.
+▷Ifn⩽f(n)then Bubble Sort is used to sort the arrayC.
+Next, consider the two recursive functionsT
+1
+andT
+2
+:
+T
+1
+(1) =2,T
+1
+(2) =1
+T
+1
+(n) =T
+1
+(n−1) −2T
+1
+(n−2)forn >2
+T
+2
+(1) =2,T
+2
+(2) =1
+T
+2
+(n) =T
+2
+(n−1) −T
+2
+(n−2)forn >2
+These are the steps of your program:
+1.  Takenas input from the user.
+2.  Populate ArrayAby running functionT
+1
+for inputs{1, 2, . . . ,n}.  ArrayBshould be populated by
+running functionT
+2
+for inputs{1, . . . ,n}.
+3.  Select anf(·)such that the running time off(·)-Combined sort onnelements isO(nlogn).
+4.  Sort ArrayAwithf(·)-Combined sort technique, for a proper selection off(·).
+1
+
+5.  Sort ArrayBwith the sorting technique amongst Bubble sort, Insertion Sort, Merge sort, Bucket
+sort, andf(·)-Combined Sort (for some appropriatef(·)) that will have the fastest worst case run-
+ning time.
+6.  Output the arraysAandBbefore and after sorting.
+Submit a single .c or .cpp file. Your code should get compiled properly by gcc or g++ compiler.
+Sample Output
+Input a value for n: 6
+The unsorted array A: 2 1 -3 -5 1 11
+The sorted array A: -5 -3 1 1 2 11
+The unsorted array B: 2 1 -1 -2 -1 1
+The sorted array B: -2 -1 -1 1 1 2
+Policy on Plagiarism
+Academic integrity is expected from
+all the students. You should work on
+the assignment/exam consulting
+only the material we share with you.
+You are required to properly
+mention/cite anything else you look
+at. Any student submitting
+plagiarized code will be penalized
+heavily. Repeated violators of our
+policy will be deregistered from the
+course. Read this to know what is
+plagiarism.
+2

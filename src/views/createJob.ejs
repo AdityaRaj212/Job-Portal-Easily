@@ -1,0 +1,83 @@
+<div class="heading">
+    Job creation form
+</div>
+
+<div class="error_message">
+  <% if(errorMessage){ %>
+    <div class="alert alert-danger" role="alert">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+</div>
+
+<div class="add_job_container">
+    <form class="row g-3" action="/createJob" method="post">
+        <input type="hidden" name="info_tag[]" value="Job">
+        <input type="hidden" name="posting_date" value="<%= curr_date %>">
+
+        <div class="col-md-6">
+          <label for="profile" class="form-label">Job Profile</label>
+          <input type="text" class="form-control" id="profile" name="profile">
+        </div>
+        <div class="col-md-6">
+          <label for="hirer" class="form-label">Company Name</label>
+          <input type="text" class="form-control" id="hirer" name="hirer">
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Job Location</label>
+          <input type="text" class="form-control" id="location" name="location" value="Work from home">
+        </div>
+        <div class="col-md-6">
+          <label for="salary" class="form-label">Salary (Annual CTC in INR)</label>
+          <input type="number" class="form-control" id="salary" name="salary">
+        </div>
+        <div class="col-md-6">
+            <label for="start" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="start" name="start">
+        </div>
+        <div class="col-md-6">
+        <label for="experience" class="form-label">Experience</label>
+        <select id="experience" class="form-select" name="experience">
+            <option selected>Fresher</option>
+            <option>1-2 years</option>
+            <option>2-5 years</option>
+            <option>5+ years</option>
+        </select>
+        </div>
+        <div class="col-md-12">
+            <label for="description" class="form-label">About the job</label>
+            <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+        </div>
+        <div class="col-md-12">
+            <label for="responsibilities[]" class="form-label">Key Responsibilities</label>
+            <div id="resp_container">
+                <!-- Inputs will be added here -->
+                <input type="text" class="form-control dynamic_input" name="responsibilities[]">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addInput('resp_container','responsibilities')">Add Input</button>
+        </div>
+
+        <div class="col-md-12">
+            <label for="skills[]" class="form-label">Skill(s) required</label>
+            <div id="skills_container">
+                <!-- Inputs will be added here -->
+                <input type="text" class="form-control dynamic_input" name="skills[]">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="addInput('skills_container','skills')">Add Input</button>
+        </div>
+
+        <div class="col-md-6">
+            <label for="openings" class="form-label">Number of Openings</label>
+            <input type="number" class="form-control" id="openings" name="openings">
+        </div>
+
+        <div class="col-md-12">
+            <label for="about_hirer" class="form-label">About the company</label>
+            <textarea class="form-control" id="about_hirer" rows="3" name="about_hirer"></textarea>
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Post</button>
+        </div>
+      </form>
+</div>

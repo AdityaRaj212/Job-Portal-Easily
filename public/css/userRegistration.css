@@ -1,0 +1,10 @@
+.registration_container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration_form{
+    width: 50vw;
+}

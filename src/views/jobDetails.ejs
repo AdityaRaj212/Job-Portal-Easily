@@ -1,0 +1,100 @@
+<div class="details_container">
+    <div class="heading"><b><%= job.profile %> Job</b></div>
+    <div class="details_card card">
+        <div class="details_job_profile">
+            <h3><%= job.profile %></h3>
+            <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+        </div>
+        <div class="details_hirer">
+            <small class="light_text">
+                <%= job.hirer %>
+            </small>
+        </div>
+        <div class="details_location">
+            <% if(job.location=='Work from home'){ %>
+                <i class="fa-solid fa-house light_text"></i>
+            <% }else{ %>
+                <i class="fa-solid fa-location-dot light_text"></i>
+            <% } %>
+            <%= job.location %>
+        </div>
+        <div class="details_details">
+            <div class="details_start_date">
+                <div class="light_text"><i class="fa-solid fa-calendar-days"></i> Start Date</div>
+                <div><%= job.start %></div>
+            </div>
+            <div class="details_salary">
+                <div class="light_text"><i class="fa-solid fa-indian-rupee-sign"></i> CTC(Annual)</div>
+                <%= job.salary %>
+            </div>
+            <div class="details_experience">
+                <div class="light_text"><i class="fa-solid fa-briefcase"></i> Experience</div>
+                <%= job.experience %>
+            </div>
+        </div>
+        <div class="details_info_tags">
+            <% if(days_passed=='0'){ %>
+                <div class="tag">Posted Today</div>
+            <% }else if(days_passed<'7'){ %>
+                <div class="tag">Posted <%= days_passed %> days ago</div>
+            <% }else if(days_passed<'30'){ %>
+                <div class="tag">Posted <%= Math.round((Number(days_passed))/7) %> weeks ago</div>
+            <% }else if(days_passed<'365'){ %>
+                <div class="tag">Posted <%= Math.round((Number(days_passed))/30) %> months ago</div>
+            <% }else{ %>
+                <div class="tag">Posted <%= Math.round((Number(days_passed))/365) %> year ago</div>
+            <% } %>
+            <% job.info_tag.forEach((info)=>{ %>
+                <div class="tag"><%= info %></div>
+            <% }) %>
+        </div>
+
+        <hr>
+
+        <div class="details_about_job">
+            <% if(job.description!=''){ %>
+                <div class="sub_heading">About the job</div>
+                <div class="content">
+                    <% if(job.description!=""){ %>
+                        <%= job.description %>
+                    <% } %>
+                </div>
+            <% } %>
+
+            <% if(job.responsibilities[0]!=''){ %>    
+                <div>Key responsibilities:</div>
+                <ol>
+                    <% job.responsibilities.forEach((resp)=>{ %>
+                        <li class="content"><%= resp %></li>
+                    <% }) %>
+                </ol>
+            <% } %>
+        </div>
+
+        <div class="details_skills_required">
+            <div class="sub_heading">Skill(s) required</div>
+            <div class="details_skills_tag">
+                <% job.skills.forEach((skill)=>{ %>
+                    <div class="tag"><%= skill %></div>
+                <% }) %>
+            </div>
+        </div>
+
+        <div class="details_salary_offered">
+            <div class="sub_heading">Salary</div>
+            <div class="content">Annual CTC: ₹<%=job.salary %></div>
+        </div>
+
+        <% if(job.openings!=''){ %>
+            <div class="details_no_of_openings">
+                <div class="sub_heading">Number of openings</div>
+                <div class="content"><%= job.openings %></div>
+            </div>
+        <% } %>
+
+        <div class="details_about_hirer">
+            <div class="sub_heading">About <%=job.hirer %></div>
+            <div class="content"><%= job.about_hirer %></div>
+        </div>
+    </div>
+</div>
