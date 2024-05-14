@@ -34,15 +34,25 @@ export default class jobsModel{
 
     static add_applicant(job_id,name,email,contact_no,resume_path){
         const job = jobs.find((j)=>j.id==job_id);
-        console.log(job);
-        let new_applicant = {};
-        new_applicant.applicant_id = job.applicants.length+1;
-        new_applicant.name = name;
-        new_applicant.email = email;
-        new_applicant.contact = contact_no;
-        new_applicant.resume_path = resume_path;
+    
+        let new_applicant = {
+            applicant_id : job.applicants.length+1,
+            name : name,
+            email : email,
+            contact : contact_no,
+            resume_path : resume_path,
+        }
 
         job.applicants.push(new_applicant);
+    }
+
+    static delete_job(job_id){
+        // jobs.reverse();
+        console.log(jobs);
+        const index = jobs.findIndex((j)=>j.id==job_id);
+        jobs.splice(index,1);
+        console.log(job_id);
+        // jobs.reverse();
     }
 }
 

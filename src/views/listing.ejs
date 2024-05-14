@@ -41,6 +41,7 @@
                     <% if(userType=='hirer'){ %>
                         <a class="btn btn-info listing_btn" href="/updateJob/<%= job.id %>">Update Job Details</a>
                         <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+                        <button class="btn btn-danger listing_btn" onclick='delete_job("<%=job.id%>","<%=job.profile%>","<%=job.hirer%>")'>Delete</button>
                     <% } %>
                 <% } %>
 

@@ -94,4 +94,10 @@ export default class JobsController{
         // console.log(req.file);
         res.redirect('/jobs');
     }
+
+    getDeleteJob(req,res){
+        const job_id = req.params.job_id;
+        jobsModel.delete_job(job_id);
+        res.redirect('/jobs');
+    }
 }
