@@ -13,24 +13,28 @@ import save_info from './src/middlewares/cookie.middleware.js';
 
 const server = new express();
 
+const jobsController = new JobsController();
+const userController = new UserController();
+
+server.use(session({
+    secret: 'jobportal',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false,
+        maxAge: 1*24*3600*1000,
+    }
+}));
+server.use(save_info);
 server.use(express.static('src/views'));
 server.use(express.static(path.join(path.resolve(),'public')));
 server.use(express.urlencoded({extended:true}));
 server.use(ejsLayouts);
 server.use(cookieParser());
-server.use(save_info);
-server.use(session({
-    secret: 'jobportal',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {secure: false}
-}));
-
 server.set('view engine','ejs');
 server.set('views',path.join(path.resolve(),'src','views'));
 
-const jobsController = new JobsController();
-const userController = new UserController();
+
 
 server.get('/',jobsController.getWelcome);
 server.get('/jobs',auth,jobsController.getListing);

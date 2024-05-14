@@ -1,9 +1,7 @@
 let save_info = (req,res,next)=>{
-    if(!req.cookies.userName){
-        res.cookie('userName','adi',{
-            maxAge: 5*60*1000
-        })
-    }
+    res.locals.userEmail = req.session.userEmail || null;
+    res.locals.userType = req.session.userType || null;
+    console.log(req.session);
     next();
 };
 

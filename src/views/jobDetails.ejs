@@ -3,7 +3,11 @@
     <div class="details_card card">
         <div class="details_job_profile">
             <h3><%= job.profile %></h3>
-            <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+            <% if(userType){ %>
+                <% if(userType=='hirer'){ %>
+                    <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+                <% } %>
+            <% } %>
         </div>
         <div class="details_hirer">
             <small class="light_text">
@@ -32,21 +36,28 @@
                 <%= job.experience %>
             </div>
         </div>
-        <div class="details_info_tags">
-            <% if(days_passed=='0'){ %>
-                <div class="tag">Posted Today</div>
-            <% }else if(days_passed<'7'){ %>
-                <div class="tag">Posted <%= days_passed %> days ago</div>
-            <% }else if(days_passed<'30'){ %>
-                <div class="tag">Posted <%= Math.round((Number(days_passed))/7) %> weeks ago</div>
-            <% }else if(days_passed<'365'){ %>
-                <div class="tag">Posted <%= Math.round((Number(days_passed))/30) %> months ago</div>
-            <% }else{ %>
-                <div class="tag">Posted <%= Math.round((Number(days_passed))/365) %> year ago</div>
+        <div class="details_tags_and_apply">
+            <div class="details_info_tags">
+                <% if(days_passed=='0'){ %>
+                    <div class="tag">Posted Today</div>
+                <% }else if(days_passed<'7'){ %>
+                    <div class="tag">Posted <%= days_passed %> days ago</div>
+                <% }else if(days_passed<'30'){ %>
+                    <div class="tag">Posted <%= Math.round((Number(days_passed))/7) %> weeks ago</div>
+                <% }else if(days_passed<'365'){ %>
+                    <div class="tag">Posted <%= Math.round((Number(days_passed))/30) %> months ago</div>
+                <% }else{ %>
+                    <div class="tag">Posted <%= Math.round((Number(days_passed))/365) %> year ago</div>
+                <% } %>
+                <% job.info_tag.forEach((info)=>{ %>
+                    <div class="tag"><%= info %></div>
+                <% }) %>
+            </div>
+            <% if(userType){ %>
+                <% if(userType=='applicant'){ %>
+                    <a type="button" class="btn btn-primary">Apply for this job</a>
+                <% } %>
             <% } %>
-            <% job.info_tag.forEach((info)=>{ %>
-                <div class="tag"><%= info %></div>
-            <% }) %>
         </div>
 
         <hr>

@@ -57,6 +57,13 @@
     align-items: center;
 }
 
+.details_tags_and_apply{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .details_info_tag{
     display: flex;
     flex-direction: row;

@@ -7,8 +7,8 @@ export default class UserController{
     }
 
     postRegister(req,res){
-        const {name,email,password} = req.body;
-        UserModel.add_user(name,email,password);
+        const {name,email,password,user_type} = req.body;
+        UserModel.add_user(name,email,password,user_type);
         res.redirect('/login');
     }
 
@@ -17,14 +17,19 @@ export default class UserController{
     }
 
     postLogin(req,res){
-        const {email,password} = req.body;
+        const {email,password,user_type} = req.body;
         const user = UserModel.is_valid_user(email,password);
 
         if(!user){
             res.render('userLogin',{errorMessage: "Invalid credentials"});
         }
         req.session.userEmail = email;
+        req.session.userName = user.name;
+        req.session.userPassword = user.password;
+        req.session.userType = user.user_type;
+
         res.locals.userEmail = email;
+        res.locals.userType = user.user_type;
         const jobs = jobsModel.list_jobs();
         res.render('listing',{jobs});
         console.log('yo');

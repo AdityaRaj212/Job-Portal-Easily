@@ -8,3 +8,9 @@
 .registration_form{
     width: 50vw;
 }
+
+.registration_user_type_selection{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

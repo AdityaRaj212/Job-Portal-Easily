@@ -37,8 +37,12 @@
                 </div>
                 <hr>
                 <a class="btn btn-info listing_btn" href="/jobDetail/<%= job.id %>">View Details</a>
-                <a class="btn btn-info listing_btn" href="/updateJob/<%= job.id %>">Update Job Details</a>
-                <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+                <% if(userType){ %> 
+                    <% if(userType=='hirer'){ %>
+                        <a class="btn btn-info listing_btn" href="/updateJob/<%= job.id %>">Update Job Details</a>
+                        <a class="btn btn-info listing_btn" href="/applicantList/<%= job.id %>">Applicants</a>
+                    <% } %>
+                <% } %>
 
             </div>
         <% }) %>
