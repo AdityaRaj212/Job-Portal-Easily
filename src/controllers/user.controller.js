@@ -27,20 +27,13 @@ export default class UserController{
         req.session.userName = user.name;
         req.session.userPassword = user.password;
         req.session.userType = user.user_type;
+        req.session.userId = user.id;
 
         res.locals.userEmail = email;
         res.locals.userType = user.user_type;
         const jobs = jobsModel.list_jobs();
         res.render('listing',{jobs});
         console.log('yo');
-        // req.session.save((err) => {
-        //     if (err) {
-        //         console.error('Error saving session:', err);
-        //     }
-        //     // Redirect after saving session
-        //     res.redirect('/jobs');
-        // });
-        // res.redirect('/jobs');
     }
 
     logout(req,res){

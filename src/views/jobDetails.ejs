@@ -55,7 +55,7 @@
             </div>
             <% if(userType){ %>
                 <% if(userType=='applicant'){ %>
-                    <a type="button" class="btn btn-primary">Apply for this job</a>
+                    <a href="/apply_for_job/<%= job.id %>" class="btn btn-primary">Apply for this job</a>
                 <% } %>
             <% } %>
         </div>

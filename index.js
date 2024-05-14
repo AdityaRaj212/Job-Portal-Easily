@@ -41,18 +41,20 @@ server.get('/jobs',auth,jobsController.getListing);
 server.get('/jobDetail/:id',auth,jobsController.getJobDetail);
 server.get('/createJob',auth,jobsController.getJobCreationForm);
 server.get('/updateJob/:id',auth,jobsController.getUpdateJob);
-// server.get('/newApplicant',jobsController.getNewApplicant);
+server.get('/newApplicant',jobsController.getNewApplicant);
 server.get('/applicantList/:id',auth,jobsController.getApplicantList);
 server.get('/pdf/:file_path',auth,jobsController.read_file);
 server.get('/register',userController.getRegister);
 server.get('/login',userController.getLogin);
 server.get('/logout',userController.logout);
+server.get('/apply_for_job/:job_id',jobsController.getApplyForJob);
 
 server.post('/createJob',validate_request,jobsController.postJobCreationForm);
 server.post('/updateJob',validate_request,jobsController.postJobUpdate);
 server.post('/upload', upload.single('pdf'),jobsController.upload_file);
 server.post('/register',userController.postRegister);
 server.post('/login',userController.postLogin);
+server.post('/apply_for_job/:job_id',upload.single('resume_path'),jobsController.postApplyForJob);
 
 server.listen(3500,()=>{
     console.log('Server is up and running at 3500');

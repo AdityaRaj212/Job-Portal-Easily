@@ -31,6 +31,19 @@ export default class jobsModel{
         const job = jobs.find((job)=>job.id==job_id);
         return job.applicants;
     }
+
+    static add_applicant(job_id,name,email,contact_no,resume_path){
+        const job = jobs.find((j)=>j.id==job_id);
+        console.log(job);
+        let new_applicant = {};
+        new_applicant.applicant_id = job.applicants.length+1;
+        new_applicant.name = name;
+        new_applicant.email = email;
+        new_applicant.contact = contact_no;
+        new_applicant.resume_path = resume_path;
+
+        job.applicants.push(new_applicant);
+    }
 }
 
 const jobs = [
@@ -120,21 +133,21 @@ const jobs = [
         "about_hirer": "Microsoft is a leading technology company that empowers individuals and organizations around the world to achieve more. With a diverse range of products and services, including software, hardware, and cloud computing, Microsoft is committed to innovation and excellence. Join us and be part of a team that's shaping the future of technology.",
         "applicants": [
             {
-                "applicant_id": 6,
+                "applicant_id": 1,
                 "name": "Alice Williams",
                 "email": "alice@gmail.com",
                 "contact": "9876543210",
                 "resume_path": "/public/uploads/alice_resume.pdf"
             },
             {
-                "applicant_id": 7,
+                "applicant_id": 2,
                 "name": "Bob Anderson",
                 "email": "bob@gmail.com",
                 "contact": "1234567890",
                 "resume_path": "/public/uploads/bob_resume.pdf"
             },
             {
-                "applicant_id": 8,
+                "applicant_id": 3,
                 "name": "Ella Davis",
                 "email": "ella@gmail.com",
                 "contact": "9876543210",
@@ -166,7 +179,7 @@ const jobs = [
         "about_hirer": "Facebook is a social media and technology company that connects billions of people worldwide. Our mission is to give people the power to build community and bring the world closer together. With a diverse and inclusive workplace culture, we're committed to creating opportunities for everyone to thrive. Join us and be part of a team that's making a positive impact on the world.",
         "applicants": [
             {
-                "applicant_id": 9,
+                "applicant_id": 1,
                 "name": "Chris Moore",
                 "email": "chris@gmail.com",
                 "contact": "1234567890",
@@ -198,7 +211,7 @@ const jobs = [
         "about_hirer": "Apple is a technology company known for its innovation and design excellence. With a range of iconic products and services, including iPhone, iPad, Mac, and more, Apple is dedicated to creating products that enrich people's lives. Join us and be part of a team that's redefining what's possible.",
         "applicants": [
             {
-                "applicant_id": 10,
+                "applicant_id": 1,
                 "name": "Sophia Lee",
                 "email": "sophia@gmail.com",
                 "contact": "9876543210",
@@ -230,35 +243,35 @@ const jobs = [
         "about_hirer": "Amazon is a multinational technology company that focuses on e-commerce, cloud computing, digital streaming, and artificial intelligence. With a customer-centric approach and a commitment to innovation, Amazon strives to be Earth's most customer-centric company where people can find and discover anything they want to buy online. Join us and be part of a team that's shaping the future of commerce and technology.",
         "applicants": [
             {
-                "applicant_id": 11,
+                "applicant_id": 1,
                 "name": "Liam Smith",
                 "email": "liam@gmail.com",
                 "contact": "1234567890",
                 "resume_path": "/public/uploads/liam_resume.pdf"
             },
             {
-                "applicant_id": 12,
+                "applicant_id": 2,
                 "name": "Olivia Johnson",
                 "email": "olivia@gmail.com",
                 "contact": "9876543210",
                 "resume_path": "/public/uploads/olivia_resume.pdf"
             },
             {
-                "applicant_id": 13,
+                "applicant_id": 3,
                 "name": "Noah Williams",
                 "email": "noah@gmail.com",
                 "contact": "1234567890",
                 "resume_path": "/public/uploads/noah_resume.pdf"
             },
             {
-                "applicant_id": 14,
+                "applicant_id": 4,
                 "name": "Emma Davis",
                 "email": "emma@gmail.com",
                 "contact": "9876543210",
                 "resume_path": "/public/uploads/emma_resume.pdf"
             },
             {
-                "applicant_id": 15,
+                "applicant_id": 5,
                 "name": "William Wilson",
                 "email": "william@gmail.com",
                 "contact": "1234567890",
@@ -267,8 +280,3 @@ const jobs = [
         ]
     }
 ];
-
-
-
-
-

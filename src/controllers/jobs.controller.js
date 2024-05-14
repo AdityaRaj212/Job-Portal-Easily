@@ -74,4 +74,24 @@ export default class JobsController{
             res.status(404).send('PDF file not found');
         }
     }
+
+    getApplyForJob(req,res){
+        const job_id = req.params.job_id;
+        const userName = req.session.userName;
+        const userEmail = req.session.userEmail;
+        res.render('applyForJob',{userName,userEmail,job_id});
+    }
+
+    postApplyForJob(req,res){
+        const job_id = req.params.job_id;
+        const name = req.session.userName;
+        const email = req.session.userEmail;
+        const contact_no = req.body.contact_no;
+        const resume_path = req.file.path;
+        jobsModel.add_applicant(job_id,name,email,contact_no,resume_path);
+        // console.log('waa..............................');
+        // console.log(req.body);
+        // console.log(req.file);
+        res.redirect('/jobs');
+    }
 }
