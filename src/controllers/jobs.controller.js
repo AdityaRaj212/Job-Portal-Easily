@@ -100,4 +100,8 @@ export default class JobsController{
         jobsModel.delete_job(job_id);
         res.redirect('/jobs');
     }
+
+    getError404(req,res){
+        res.status(404).render('error404');
+    }
 }

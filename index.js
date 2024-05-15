@@ -57,6 +57,8 @@ server.post('/login',userController.postLogin);
 server.post('/apply_for_job/:job_id',upload.single('resume_path'),jobsController.postApplyForJob);
 server.post('/delete_job/:job_id',jobsController.getDeleteJob);
 
+server.use(jobsController.getError404);
+
 server.listen(3500,()=>{
     console.log('Server is up and running at 3500');
 })
